@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chat</title>
+</head>
+<style>
+
+#Edit {
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+}
+
+#Cancel {
+    display: inline-block;
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+}
+
+</style>
+<body>
+    <h3>Edit Chat</h3>
+    <p>Chat Id is <b><%= chatId._id %></b></p>
+    <p>Sender : <b><%= chatId.from %></b></p>
+    <p>Receiver : <b><%= chatId.to %></b></p>
+    <form action="/chats/<%=chatId._id%>?_method=PUT" method="POST">
+    <textarea name="msg" id="msg" cols="30" rows="10"><%= chatId.mess %></textarea>
+    <br><br>
+    <button id="Edit">Edit</button>
+
+    <form action="/chats" method="get">
+        <button id="Cancel">Cancel</button>
+    </form>
+
+</form>
+
+</body>
+</html>

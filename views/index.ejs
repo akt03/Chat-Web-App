@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp</title>
+</head>
+<style>
+    #homeForm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #Home {
+        background-color: green;
+        border-radius: 5px;
+        border-radius: 2px solid black;
+        width: 7rem;
+        height: 5rem;
+        cursor: pointer;
+    }
+
+    #Home:hover {
+        background-color: lightgreen;
+        /* color: whitesmoke; */
+        transform: scale(1.2);
+        transition: transform 0.8s ease-in-out;
+    }
+
+    #editForm {
+        display: inline-block;
+        display: flex;
+        justify-content: right;
+        /* align-items: flex-end; */
+    }
+
+    .deleteForm {
+        display: inline-block;
+        display: flex;
+        justify-content: right;
+        /* align-items: flex-end; */
+    }
+
+    #Edit {
+        background-color: aquamarine;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 60px;
+        cursor: pointer;
+        width: 5rem;
+        height: 2rem;
+    }
+
+    .Delete {
+        background-color: lightcoral;
+        opacity: 0.8;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        cursor: pointer;
+        width: 5rem;
+        height: 2rem;
+    }
+
+    #Edit:hover {
+        background-color: lightgreen;
+        transform: scale(1.1);
+        transition: transform 1s ease-in-out;
+    }
+
+    .Delete:hover {
+        background-color: red;
+        transform: scale(1.1);
+        transition: transform 1s ease-in-out;
+    }
+
+    table {
+        margin: auto;
+        width: 80%;
+    }
+
+    table,
+    td {
+        border: 2px solid;
+    }
+
+    th {
+        background-color: yellow;
+    }
+
+    td {
+        background-color: antiquewhite;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.Delete').on('click', function () {
+            const id = $(this).data('id');
+            const confirmDelete = confirm('Are you sure you want to delete this Chat?');
+            const form = document.getElementById(id);
+            console.log(form);
+            // console.log(confirmDelete);
+            if (confirmDelete) {
+                // window.location.href = '/chats/' + id + '?confirmDelete=true' ;
+                form.action = `chats/${id}?_method=DELETE&confirmDelete=true`;
+
+            } else {
+                form.action = `chats/${id}?_method=DELETE&confirmDelete=false`;
+            }
+        });
+    });
+
+
+</script>
+
+
+<body>
+    <table>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        <% for (let chat of chats) { %>
+            <tr>
+                <td>
+                    <%= chat.from %>
+                </td>
+                <td>
+                    <%= chat.to %>
+                </td>
+                <td>
+                    <%= chat.mess %>
+                        <div>
+                            <form action="chats/<%=chat._id%>/edit" method="get" id="editForm">
+                                <button id="Edit">Edit</button>
+                            </form>
+                            <form method="post" class="deleteForm" id="<%=chat._id%>">
+                                <button class="Delete" data-id="<%=chat._id%>">Delete</button>
+                            </form>
+                        </div>
+                </td>
+                <td>
+                    <%= chat.date %>
+                </td>
+                <td>
+                    <%= chat.time %>
+                </td>
+            </tr>
+            <% } %>
+
+
+    </table>
+
+    <br><br>
+    <form action="/" method="get" id="homeForm">
+        <button id="Home">Back to Home Page</button>
+    </form>
+</body>
+
+</html>

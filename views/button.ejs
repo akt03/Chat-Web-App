@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+</head>
+<style>
+    form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+    }
+    button {
+        background-color: green;
+        border-radius: 5px;
+        border-radius: 2px solid black;
+        width: 7rem;
+        height: 5rem;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background-color: lightgreen ;
+        transform: scale(1.2);
+        transition: transform 1s ease-in-out ;
+    }
+</style>
+<body>
+    <form action="/chats/new" method="get">
+        <button>New Chats</button>
+    </form>
+<br><br>
+    <form action="/chats" method="get">
+        <button>View Previous Chats</button>
+    </form>
+</body>
+</html>

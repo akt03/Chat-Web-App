@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #Create {
+    /* display: inline-block; */
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+}
+
+    #Cancel {
+    /* display: inline-block; */
+    background-color: lightcoral;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 5rem;
+    height: 2rem;
+}
+</style>
+<body>
+    <h3>Write New Chats</h3>
+    <form action="/chats" method="post">
+        <input type="text" name="from" id="from" placeholder="Sender">
+        <br>
+        <br>
+        <input type="text" name="to" id="to" placeholder="Reciever">
+        <br>
+        <br>
+        <textarea name="msg" id="msg" cols="30" rows="10" placeholder="Enter your message"></textarea>
+        <br>
+        <br>
+        <button id="Create">Create</button>
+        <form action="/chats" method="get">
+            <button id="Cancel">Cancel</button>
+        </form>
+</body>
+</html>
